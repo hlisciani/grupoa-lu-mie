@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <link rel="stylesheet" href="../css/abm-personas.css">    
 
    
 </head>
@@ -18,8 +18,14 @@
         <label for="nombre">Nombre::</label>
         <input type="text" id="nombre" maxlength="50">
 
-        <button onclick="agregarPersona()">
+        <button onclick="agregarPersona()"
+                id="btnAgregar">
             Agregar
+        </button>
+        <button onclick="actualizarPersona()" 
+                class="ocultarBoton"
+                id="btnActualizar">
+            Actualizar
         </button>
 
     </section>

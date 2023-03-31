@@ -1,4 +1,5 @@
 let array = JSON.parse(localStorage.getItem('personas')) || [];
+let currentIdx = -1 ;
 
 function agregarPersona() {
     console.log('funciona');
@@ -111,11 +112,51 @@ ListadoPersona(array);
 function editar(id){
     idx = array.findIndex(p => p.id===id) ;
     if (idx>=0){
+        currentIdx = idx;
         const p = array[idx];
         const dni = document.getElementById('dni');
         dni.value = p.dni ;
         const nombre = document.getElementById('nombre');
         nombre.value = p.nombre ;
-        
+
+        //mostrar el btotn actualizar
+        const btn = document.getElementById('btnActualizar');
+        btn.classList.remove('ocultarBoton');
+        btn.classList.add('mostrarBoton');
+
+        //ocultar el btotn agregar
+        const btnAgregar = document.getElementById('btnAgregar');
+        btnAgregar.classList.add('ocultarBoton');
+       
     }
+}
+function actualizarPersona() {
+    alert('Actualizando persona');
+    if(currentIdx>=0){
+        const persona = array[currentIdx];
+        const dni = document.getElementById('dni');
+        const nombre = document.getElementById('nombre');
+        persona.dni=dni.value ;
+        persona.nombre=nombre.value ;
+        //array[currentIdx]=persona ;
+        currentIdx = -1 ;
+        actualizarStoragePersonas(array);
+        document.getElementById(persona.id);
+        // actualizaoel tr directamente
+        const children = document.getElementById(persona.id).children ;
+        children[0].innerText = persona.dni ;
+        children[1].innerText = persona.nombre ;
+       
+        //mostrar el btotn Agregar
+        const btn = document.getElementById('btnAgregar');
+        btn.classList.remove('ocultarBoton');
+        btn.classList.add('mostrarBoton');
+
+        //ocultar el btotn Actualizar
+        const btnAgregar = document.getElementById('btnActualizar');
+        btnAgregar.classList.add('ocultarBoton');
+       
+
+    }
+
 }

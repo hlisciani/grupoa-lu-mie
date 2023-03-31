@@ -1,6 +1,9 @@
 .rowpersona {
     background-color: rgb(0,119,255);
 }
-.botonOculto {
+.ocultarBoton {
     display: none;
+}
+.mostrarBoton {
+    display: 'block';
 }
